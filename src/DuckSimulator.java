@@ -1,14 +1,15 @@
 public class DuckSimulator {
     public static void main(String[] args) {
         DuckSimulator simulator = new DuckSimulator();
-        simulator.simulate();
+        AbstractDuckFactory duckFactory = new CountingEchoDuckFactory();
+        simulator.simulate(duckFactory);
     }
 
-    private void simulate() {
-        Quackable mallardDuck = new QuackCounter(new QuackEcho(new MallardDuck()));
-        Quackable redheadDuck = new QuackCounter(new RedheadDuck());
-        Quackable duckCall = new QuackCounter(new DuckCall());
-        Quackable rubberDuck = new QuackCounter(new RubberDuck());
+    private void simulate(AbstractDuckFactory duckFactory) {
+        Quackable mallardDuck = duckFactory.createMallardDuck();
+        Quackable redheadDuck = duckFactory.createRedheadDuck();
+        Quackable duckCall = duckFactory.createDuckCall();
+        Quackable rubberDuck = duckFactory.createRubberDuck();
 
         Quackable goose = new GooseAdapter(new Goose());
         Quackable pigeon = new PigeonAdapter(new Pigeon());
