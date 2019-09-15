@@ -14,15 +14,17 @@ public class DuckSimulator {
         Quackable goose = new GooseAdapter(new Goose());
         Quackable pigeon = new PigeonAdapter(new Pigeon());
 
+        Flock flock = new Flock();
+        flock.add(mallardDuck);
+        flock.add(redheadDuck);
+        flock.add(duckCall);
+        flock.add(rubberDuck);
+        flock.add(goose);
+        flock.add(pigeon);
+
         System.out.println("Duck Simulator");
 
-        simulate(mallardDuck);
-        simulate(redheadDuck);
-        simulate(duckCall);
-        simulate(rubberDuck);
-
-        simulate(goose);
-        simulate(pigeon);
+        simulate(flock);
 
         System.out.println("The ducks quacked " + QuackCounter.getQuacks() + " times");
     }
